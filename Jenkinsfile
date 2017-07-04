@@ -3,7 +3,7 @@
 stage 'Dev'
 node ('docker-cloud') {
     checkout scm
-    mvn 'clean package'
+   bat "mvn clean package"
     dir('target') {stash name: 'war', includes: 'x.war'}
 }
 
@@ -33,14 +33,10 @@ node ('docker-cloud'){
     echo "Deployed to production"
 }
 
-def mvn(args) {
-    echo "present working directory :" +pwd()
-    sh "${tool 'Maven 3.x'}/bin/mvn ${args}"
-}
 
 def runTests(duration) {
     node {
-        sh "sleep ${duration}"
+        bat  "sleep ${duration}"
         }
     }
 
