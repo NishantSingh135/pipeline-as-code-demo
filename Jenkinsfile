@@ -34,7 +34,7 @@ node ('docker-cloud'){
 }
 
 def mvn(args) {
-    echo "present working directory :" pwd
+    echo "present working directory :" +pwd()
     sh "${tool 'Maven 3.x'}/bin/mvn ${args}"
 }
 
